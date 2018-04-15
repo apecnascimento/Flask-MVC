@@ -1,6 +1,5 @@
 import os
 import pkgutil
-from flask import Flask
 
 
 class FlaskMvc:
@@ -15,6 +14,7 @@ class FlaskMvc:
 
         if app is not None:
             self.init_app(app)
+
 
     def _format_route(self, controller, controllers_package):
         return '{0}.{1}'.format(controllers_package, controller), controller
@@ -35,6 +35,8 @@ class FlaskMvc:
 
     #: if not controllers package create models package
     def init_app(self, app):
+
+        self._create_base_struture()
 
         #: List all controllers in the application controllers package and return a list of tuples
         # with (url,# module_name)
